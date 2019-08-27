@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main ()
+{
+    int a[10]={26,5,37,1,61,11,59,15,48,19};
+   int i,j,temp;
+   int pivot = a[0];
+   i=0;
+   j=10;
+int r=0;
+  for(r=0;r<10;r++)
+    printf("%d ",a[r]);
+    printf("\n");
+    do
+   {
+       do i++; while(a[i] < pivot);
+       do j--; while(a[j] > pivot);
+       if(i<j)
+       {temp = a[i];
+       a[i] = a[j];
+       a[j] = temp;
+       printf("swap a[%d] a[%d]\n",i,j);
+       }
+
+   }while(i<j);
+    printf("i=%d j=%d\n",i,j);
+   printf("a[j] =%d\n",a[j]);
+   printf("pivot =%d\n",pivot);
+
+        temp = a[j];
+       a[j] = a[0];
+       a[0] = temp;
+
+   for(r=0;r<10;r++)
+    printf("%d ",a[r]);
+    printf("\n");
+
+
+
+   return 0;
+}
