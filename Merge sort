@@ -1,0 +1,83 @@
+#include <stdio.h> 
+#include <stdlib.h>
+
+void merge(int arr[], int l, int m, int r) { 
+	int i, j, k; 
+	int n1 = m - l + 1; //length of the left part
+	int n2 = r - m;  //length of the right part
+
+	int L[n1], R[n2]; 
+
+	for (i = 0; i < n1; i++) 
+		L[i] = arr[l + i]; 
+	for (j = 0; j < n2; j++) 
+		R[j] = arr[m + 1+ j]; 
+
+	i = 0;  j = 0; k = l; 
+	while (i < n1 && j < n2) { 
+		if (L[i] <= R[j]) { 
+			arr[k] = L[i]; 
+			i++; 
+		} 
+		else{ 
+			arr[k] = R[j]; 
+			j++; 
+		} 
+		k++; 
+	} 
+
+	while (i < n1) { 
+		arr[k] = L[i]; 
+		i++; 
+		k++; 
+	} 
+
+	while (j < n2) { 
+		arr[k] = R[j]; 
+		j++; 
+		k++; 
+	} 
+} 
+void mergeSort(int arr[], int l, int r) { 
+	if (l < r) { 
+		int m = l+(r-l)/2; 
+		mergeSort(arr, l, m); //sort the left part
+		mergeSort(arr, m+1, r); //sort the right part
+
+		merge(arr, l, m, r); 
+	} 
+} 
+
+
+int main (){
+	
+	int numbers, i;
+	
+	scanf("%d",&numbers);
+	
+	int list[numbers];
+	
+	for(i=0;i<numbers;i++){
+			
+		scanf("%d",&list[i]);
+	}
+	
+	mergeSort(list, 0, numbers - 1); 
+
+	printf("%d\n",numbers);
+	for(i=0;i<numbers;i++){
+		printf("%d\n",list[i]);
+	}
+	
+    return 0;
+	
+}
+
+/* input: 5
+		12 7 19 3 22
+   output: 5
+		3 
+		7 
+		12 
+		19 
+		22*/
