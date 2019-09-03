@@ -34,11 +34,11 @@ int main() {
     int arr[n];
     for(i=0;i<n;i++){
     	scanf("%d",&arr[i]);
-	}
+    }
     
     QuickSort(arr, 0, n-1);
     
-	printf("%d\n",n);
+    printf("%d\n",n);
     for (i = 0; i < n; i++) {
         printf("%d\n",arr[i]);
     }
